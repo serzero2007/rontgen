@@ -1,7 +1,11 @@
 var App = App || {};
+
+_.extend(App, Backbone.Events);
+
 var MathJax = MathJax || {};
 
 App.go = function(){
+    var self = this;
 	$.fn.quickdiff("filter", "mathSpanInline",
         function (node) {
             return (node.nodeName === "SPAN" && $(node).hasClass("mathInline"));
@@ -59,25 +63,27 @@ App.go = function(){
             redrawNeeded = false;
         }
 
+        MathJax.Hub.Register.StartupHook("End",function () {
+            self.trigger('MathRender')
+        })
+
         var startTime = (new Date()).getTime();
         var data = editor.getSession().getValue();
-    
+
         data = data.replace(/\$+/g, function(match) {
             return match.length === 1 ? '%%' : match;
         });
         localStorage.editor = editor.getSession().getValue()
         preproc = $("<div></div>").html(markdown.makeHtml(data));
         var patch = $("#output > div").quickdiff("patch", preproc, ["mathSpan", "mathSpanInline"]);
-        $(document).trigger('TextRender')
         if (patch.type !== "identical" && patch.replace.length > 0) {
             $.each(patch.replace, function (i, el) {
                 if (el.innerHTML) {
                     MathJax.Hub.Typeset(el, function () {});
-                    $(document).trigger('MathRender')
                 }
             });
         } else {
-        
+
         }
     };
 
@@ -98,7 +104,7 @@ App.go = function(){
     editor.renderer.setShowGutter(false);
 	editor.getSession().on('change', refreshModified);
     if(localStorage.editor) editor.getSession().setValue(localStorage.editor)
-    
+
     this.editor = editor
 }
 
