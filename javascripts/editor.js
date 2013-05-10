@@ -1,4 +1,6 @@
-var App = {}
+var App = App || {};
+var MathJax = MathJax || {};
+
 $(function() {
 	$('.bar').css({'width':'50%'})
 
@@ -67,14 +69,6 @@ App.go = function(){
         figures: true
     });
 
-    var setRenderDelay = function (rendertime) {
-        if (rendertime > 50) {
-            renderDelay = 400;
-        } else if (rendertime > 10) {
-            renderDelay = 50;
-        }
-    };
-
     // Redraws the output using the content of the input.
     var redraw = function () {
         if (!redrawNeeded) {
@@ -85,11 +79,7 @@ App.go = function(){
 
         var startTime = (new Date()).getTime();
         var data = editor.getSession().getValue();
-        // var temp = data.split('$$')
-        // for(var i = 0; i < temp.length; i++){
-        //     temp[i] = temp[i].split('$').join('%%')
-        // }
-        // data = temp.join('$$')
+    
         data = data.replace(/\$+/g, function(match) {
             return match.length === 1 ? '%%' : match;
         });
@@ -100,18 +90,11 @@ App.go = function(){
         if (patch.type !== "identical" && patch.replace.length > 0) {
             $.each(patch.replace, function (i, el) {
                 if (el.innerHTML) {
-                    console.log(true)
-                    MathJax.Hub.Typeset(el, function () {
-                        setRenderDelay((new Date()).getTime() - startTime);
-                    });
-                } else if (el.tagName && el.tagName.toLowerCase() === 'img') {
-                    // size_image(el);
-                } else {
-                    setRenderDelay((new Date()).getTime() - startTime);
+                    MathJax.Hub.Typeset(el, function () {});
                 }
             });
         } else {
-            setRenderDelay((new Date()).getTime() - startTime);
+        
         }
     };
 
@@ -120,7 +103,6 @@ App.go = function(){
         if (suppress_redraw) return;
         redrawNeeded = true;
         modified = editor.getSession().getValue() !== content;
-
         if (timer) {
             clearTimeout(timer);
         }
