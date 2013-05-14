@@ -15,48 +15,32 @@ body {
 #container {
     display: block;
     position:absolute;
-    height:auto;
+    height:99.9%;
     bottom:0;
     top:0;
     left:0;
     right:0;
-}
-
-.navbar-inner-landing {
-  -webkit-box-shadow:rgba(0, 0, 0, 0.2) 0 1px 4px;
-  background-color:white;
-  border-bottom-color:#CCCCCC;
-  border-bottom-style:solid;
-  border-bottom-width:1px;
-  box-shadow:rgba(0, 0, 0, 0.2) 0 1px 4px;
-  box-sizing:content-box;
-  height:55px;
-  padding:0 30px;
+    width:100%;
+    min-width: 900px;
 }
 
 /*
   Ace overrides
 */
-
 .ace_print_margin{display: none;}
-
 .ace_sb{display:none;}
+
 /*
   Custom
 */
 
 /*Editor*/
-#write{
-  /*border-right: 1px solid #e6e6e6;*/
-  /*display:none;*/
-}
 
 .write {
   height:90%;
   margin-left:auto;
   margin-right:auto;
   width:600px;
-  /*margin-top: 80px;*/
 }
 
 .editor{
@@ -90,33 +74,16 @@ body {
   margin-top: 20px;
   margin-bottom: 20px;
   width:600px;
-  min-height: 85%;
+  min-height: 83%;
   overflow-x:hidden;
-  overflow-y:scroll;
   background-color: #fff;
   padding:40px;
   -webkit-box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3);
   -moz-box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3);
   box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3);
   word-wrap: break-word;
- 
-}
 
-/*Textareas*/
-textarea, #input-title{
-  border:none;
-  margin:0;
-  box-shadow:none;
-  border:none;
 }
-
-#input-title{
-  font-size: 20px;
-  margin-bottom: 1rem;
-  border-bottom: 1px solid #e6e6e6;
-  border-radius: 0px;
-}
-
 
 .overlay{
   position:fixed;
@@ -130,28 +97,3 @@ textarea, #input-title{
   bottom:0;
 }
 
-.btn-group-vertical > button {
-  border-left-style:none;
-  margin-left:-13px !important;
-  padding-right:0 !important;
-  width:60px;
-  height:30px;
-  opacity:0.6;
-}
-
-.btn-group-vertical > button:hover{
-  opacity:1;
-}
-
-.becquerel-buttons-open{
-  border-bottom-left-radius:4px !important;
-  border-bottom-right-radius:4px !important;
-  border-top-left-radius:4px  !important;
-  border-top-right-radius:4px !important;
-}
-
-.btn-group-vertical{
-    float: left;
-    position: absolute;
-    width: 50px;
-}

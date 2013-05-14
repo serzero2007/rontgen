@@ -1,7 +1,8 @@
 $(function() {
 	$('.bar').css({'width':'50%'})
 
-	App.go()
+	var rontgen = new Rontgen()
+	rontgen.start()
 
 	$('.bar').css({'width':'100%'})
 
