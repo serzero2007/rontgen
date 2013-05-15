@@ -1,3 +1,5 @@
+.c9_revisions/*
+.c9_revisions
 .c9_revisions/
-node_modules/
+node_modules/*
 .DS_Store
