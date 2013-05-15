@@ -7,6 +7,7 @@ Rontgen.prototype.start = function(){
     this
         .initializeQuickDiff()
         .initializeMarkdown()
+        .initializeRender()
         .initializeEditor()
 
     this.renderOn = true;
@@ -55,6 +56,21 @@ Rontgen.prototype.initializeMarkdown = function () {
     return this;
 }
 
+Rontgen.prototype.initializeRender = function(){
+    this.$render = $('.render')
+    var box = {};
+    box.top = this.$render.position().top
+    box.left = this.$render.position().left
+    box.bottom = box.top + this.$render.height()
+    box.right = box.left + this.$render.width()
+
+    this.box = box;
+    return this;
+}
+
+Rontgen.prototype.inView = function (el) {
+    return this.box.bottom*1.2 > $(el).position().top
+}
 
 Rontgen.prototype.initializeEditor = function () {
     this.editor = ace.edit('editor');
@@ -69,7 +85,6 @@ Rontgen.prototype.initializeEditor = function () {
 Rontgen.prototype.handleEditorChange = function(){
     if(!this.renderOn) return;
     else this.redraw()
-
     return this;
 }
 
@@ -95,7 +110,10 @@ Rontgen.prototype.redraw = function () {
     if (patch.type !== "identical" && patch.replace.length > 0) {
         $.each(patch.replace, function (i, el) {
             if (el.innerHTML) {
-                MathJax.Hub.Typeset(el, function () {});
+                MathJax.Hub.Typeset(el, function(){
+                    if(el.className === 'math') self.trigger('math')
+                    if(el.className === 'mathInline') self.trigger('mathInline')
+                });
             }
         });
     }
