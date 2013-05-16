@@ -6,7 +6,7 @@ h1{
 body {
   margin: 0;
   padding: 0;
-
+  font-family: 'Crimson Text', "Georgia", "Times", "Times New Roman", serif, sans-serif;
   font-size: 1em;
   color: #333;
 }
