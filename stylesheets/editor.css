@@ -77,10 +77,11 @@ a:hover{
 
 .read{
     background-color: #333;
-    background-image:url(/font/wild_oliva.png); 
+    background-image:url(http://subtlepatterns.com/patterns/wild_oliva.png); 
+    background-image:url(/images/wild_oliva.png); 
     background-repeat:repeat;
     height:100%;
-    padding: 0px 40px;
+    padding: 0 40;
     overflow-x:hidden;
     overflow-y:scroll;
 }
@@ -88,9 +89,8 @@ a:hover{
 .render{
     width:600px;
     min-height: 800px;
-    margin: 20px auto;
-    padding:100px 40px;
-    
+    margin: 20 auto;
+    padding:100 40;
     overflow-x:hidden;
     background-color: #fff;
     -webkit-box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3);
