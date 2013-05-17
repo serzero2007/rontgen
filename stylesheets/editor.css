@@ -20,7 +20,7 @@ body {
     left:0;
     right:0;
     width:100%;
-    min-width: 900px;
+    min-width: 100px;
 }
 
 /*
@@ -75,14 +75,13 @@ a:hover{
 /*Render*/
 
 .read{
-float: right;
-  background-color: #333;
-  background-image:url(http://subtlepatterns.com/patterns/wild_oliva.png); 
-  background-repeat:repeat;
-  height:100%;
-  padding: 0px 40px;
-  overflow-x:hidden;
-  overflow-y:scroll;
+    background-color: #333;
+    background-image:url(http://subtlepatterns.com/patterns/wild_oliva.png); 
+    background-repeat:repeat;
+    height:100%;
+    padding: 0px 40px;
+    overflow-x:hidden;
+    overflow-y:scroll;
 }
 
 .render{
