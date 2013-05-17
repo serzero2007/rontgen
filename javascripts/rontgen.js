@@ -58,7 +58,7 @@ Rontgen.prototype.initializeQuickDiff = function(){
 Rontgen.prototype.initializeMarkdown = function () {
     this.showdown = new Showdown.converter();
     $.extend(this.showdown.config, {
-        stripHTML: true,
+        // stripHTML: true,
         tables: true,
         math: true,
         figures: true
