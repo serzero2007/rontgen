@@ -38,7 +38,8 @@ body {
 .write {
   height:100%;
   float: left;
-  min-width:670px;
+  width: 46%;
+  min-width:630px;
   margin:0 auto;
 }
 
