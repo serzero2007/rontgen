@@ -1,5 +1,5 @@
 var Rontgen = Rontgen || function(){};
-var MathJax = MathJax || {};
+var MathJax = MathJax || null;
 
 Rontgen.prototype.start = function(){
     var self = this;
@@ -17,6 +17,17 @@ Rontgen.prototype.start = function(){
     });
     this.handleEditorChange()
 }
+
+Rontgen.prototype.initLocalStorage = function(initString){
+    var self = this;
+    if (typeof localStorage.editor === "undefined") localStorage.editor = null;
+    if(!localStorage.editor) localStorage.editor = initString;
+    this.editor.getSession().setValue(localStorage.editor);
+    this.editor.getSession().on('change', function(){
+        localStorage.editor = self.editor.getSession().getValue();
+    });    
+};
+
 
 Rontgen.prototype.getEditorData = function(){
     return this.editor.getSession().getValue()
@@ -94,6 +105,16 @@ Rontgen.prototype.markdown = function (data) {
     return this.showdown.makeHtml(data);
 }
 
+Rontgen.prototype.mathjax = function(el){
+    var self = this;
+    if(!MathJax) return this;
+    MathJax.Hub.Typeset(el, function(){
+        if(el.className === 'math') self.trigger('math')
+        if(el.className === 'mathInline') self.trigger('mathInline')
+    });
+    return this;
+}
+
 
 Rontgen.prototype.redraw = function () {
     var self = this;
@@ -109,12 +130,7 @@ Rontgen.prototype.redraw = function () {
 
     if (patch.type !== "identical" && patch.replace.length > 0) {
         $.each(patch.replace, function (i, el) {
-            if (el.innerHTML) {
-                MathJax.Hub.Typeset(el, function(){
-                    if(el.className === 'math') self.trigger('math')
-                    if(el.className === 'mathInline') self.trigger('mathInline')
-                });
-            }
+            if (el.innerHTML) self.mathjax(el);
         });
     }
 

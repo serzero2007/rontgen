@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
     <link rel="shortcut icon" href="/favicon.ico"/>
     <link rel="stylesheet" type="text/css" href="./stylesheets/bootstrap.css"/>
+    <link rel="stylesheet" type="text/css" href="./stylesheets/font-awesome.css"/>
     <link rel="stylesheet" type="text/css" href="./stylesheets/editor.css"/>
     <link rel="stylesheet" type="text/css" href="./stylesheets/minimal.css"/>
 
@@ -21,7 +22,7 @@
     <script type="text/x-mathjax-config">
         MathJax.Hub.Config({
             extensions: ["tex2jax.js"],
-            jax: ["input/TeX","output/HTML-CSS"],
+            jax: ["input/TeX","output/NativeMML"],
             tex2jax: {inlineMath: [["%%","%%"]]},
                 "HTML-CSS": {
                 scale: 100
@@ -44,15 +45,17 @@
     <script src="./javascripts/libs/showdown.js"></script>
     <script src="./javascripts/libs/quickdiff.js"></script>
     <script src="./javascripts/rontgen.js"></script>
+    <script src="./javascripts/libs/becquerel.js"></script>
     <script src="./javascripts/app.js"></script>
   </head>
 
   <body>
+    
     <div class="overlay">
       <div class="container-fluid">
         <div class="row-fluid">
           <div class="span4 offset4 text-center">
-            <h1>Hunting for Antelope.</h1>
+            <h1>Searching for photons.</h1>
             <div class="progress progress-striped active">
               <div style="width: 20%;" class="bar"></div>
             </div>
@@ -63,13 +66,12 @@
 
     <div id="container">
       <div class="row-fluid">
-        <div id="write" class="span6">
-          <div class="write">
-            <div id="editor" class="editor"></div>
-          </div>
-        </div>
+        
         <div class="read">
           <div class="render">
+                <div class="buttons buttons-render">
+                    <a id="close-fullscreen" href="#close-fullscreen"><i class="icon-resize-small"></i></a>
+                </div>
             <div class="output-show">
                 <h3>Typesetting le mathematics...</h3>
             </div>
@@ -79,6 +81,28 @@
             </div></div>
           </div>
         </div>
+        
+          <div class="write">
+            
+            <div class="editor-padding">
+                <div class="buttons">
+                    <a id="fullscreen" href="#fullscreen"><i class="icon-fullscreen"></i></a>
+                    <a id="fullscreen" class="bold" href="#fullscreen"><i class="icon-bold"></i></a>
+                    <a id="fullscreen" class="italic" href="#fullscreen"><i class="icon-italic"></i></a>
+                    <a id="fullscreen" class="quote" href="#fullscreen"><i class="icon-quote-right"></i></a>
+                    <a id="fullscreen" class="ul" href="#fullscreen"><i class="icon-list-ul"></i></a>
+                    <a id="fullscreen" class="ol" href="#fullscreen"><i class="icon-list-ol"></i></a>
+                    <a id="fullscreen" class="h1" href="#fullscreen">h1</a>
+                    <a id="fullscreen" class="h2" href="#fullscreen">h2</a>
+                    <a id="fullscreen" class="h3" href="#fullscreen">h3</a>
+                    <a id="fullscreen" class="h4" href="#fullscreen">h4</a>
+
+                </div>
+                <br>
+                <div id="editor" class="editor"></div>
+            </div>
+          </div>
+        
       </div>
     </div>
 
