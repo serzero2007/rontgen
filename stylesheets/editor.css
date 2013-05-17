@@ -77,8 +77,8 @@ a:hover{
 
 .read{
     background-color: #333;
-    background-image:url(http://subtlepatterns.com/patterns/wild_oliva.png); 
-    background-image:url(/images/wild_oliva.png); 
+    background-image:url(https://raw.github.com/eoinmurray/rontgen/gh-pages/images/wild_oliva.png); 
+    /*background-image:url(/images/wild_oliva.png); */
     background-repeat:repeat;
     height:100%;
     padding: 0 40;
