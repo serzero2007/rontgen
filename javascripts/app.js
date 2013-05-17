@@ -2,41 +2,46 @@
 
 $(function() {
     $('#close-fullscreen').hide()
+    $('.buttons-render').hide()
+
+    var originalWidth = $('.render').width()
 
     $('#fullscreen').click(function(e){
 		e.preventDefault()
 		$('.write').hide()
-        $('.read').css({'float': 'none'})
 		$('#fullscreen').hide()
+		$('.render').css({'margin-top': '50'})
 		$('#close-fullscreen').show()
+		$('.buttons-render').show()
 	})
 
 	$('#close-fullscreen').click(function(e){
-		e.preventDefault()		
-        $('.read').css({'float': 'right'})
+		e.preventDefault()
         $('.write').show()
+        $('.render').css({'margin-top': '20'})
 		$('#fullscreen').show()
 		$('#close-fullscreen').hide()
+		$('.buttons-render').hide()
 	})
-    
+
 	$('.bar').css({'width':'50%'});
 
 	var rontgen = new Rontgen();
 	rontgen.start();
     rontgen.initLocalStorage(initString);
-    
+
     new Becquerel(rontgen.editor)
 	$('.bar').css({'width':'100%'});
 
 	setTimeout(function(){
         $('.overlay').fadeOut(100);
 	},500);
-    
+
     MathJax.Hub.Register.StartupHook("End",function () {
             $(".output-show").hide();
             $(".output-hide").fadeIn();
     });
-    
+
 
 });
 
