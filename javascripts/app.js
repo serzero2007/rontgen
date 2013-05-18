@@ -42,6 +42,10 @@ $(function() {
             $(".output-hide").fadeIn();
     });
 
+    rontgen.editor.getSession().on('changeScrollTop', function(scroll) {
+      var ratio  = $('.render').height()/$('#editor').height();
+      $('.read').scrollTop(ratio * scroll);
+    });
 
 });
 

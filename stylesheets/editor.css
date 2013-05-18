@@ -28,6 +28,12 @@ body {
 */
 .ace_print_margin{display: none;}
 .ace_sb{display:none;}
+.ace_editor {
+    position: absolute;
+    overflow: scroll;
+    font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', 'Droid Sans Mono', 'Consolas', monospace;
+    font-size: 12px;
+}
 
 /*
   Custom
@@ -55,7 +61,7 @@ body {
   min-height: 500px;
   height:90%;
   width:600px;
-  overflow-y:auto;
+  overflow-y:scroll;
 }
 
 .buttons a{
