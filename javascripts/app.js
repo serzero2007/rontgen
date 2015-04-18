@@ -50,6 +50,7 @@ $(function() {
 });
 
 var initString = [
+"### Write markdown and latex on the left and its compiled on the right", 
 "# Some Example text."
 ,"> John Doe"
 ,"**Lorem ipsum dolor sit amet**, his partiendo democritum an, delicata periculis vel te, ex ius scripta legendos. Vis dicunt nostrum tincidunt in, usu at summo nulla. Cum vocibus reformidans an. Mel te elitr commune. Inani scriptorem nam ut. Nam doctus eligendi persequeris ei, et lorem aeterno viderer pro. Magna detraxit no eam, per falli assueverit ne, vim ea eirmod diceret menandri."
