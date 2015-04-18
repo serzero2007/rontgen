@@ -20,8 +20,9 @@ Rontgen.prototype.start = function(){
 
 Rontgen.prototype.initLocalStorage = function(initString){
     var self = this;
-    if (typeof localStorage.editor === "undefined") localStorage.editor = null;
-    if(!localStorage.editor) localStorage.editor = initString;
+    if (typeof localStorage.editor === "undefined") localStorage.editor = initString;
+    if(localStorage.editor === "null") localStorage.editor = initString;
+    console.log(localStorage.editor, initString, localStorage.editor=="null")
     this.editor.getSession().setValue(localStorage.editor);
     this.editor.getSession().on('change', function(){
         localStorage.editor = self.editor.getSession().getValue();
